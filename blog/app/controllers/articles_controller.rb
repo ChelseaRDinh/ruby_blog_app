@@ -8,16 +8,32 @@ class ArticlesController < ApplicationController
 	end
 	
 	def new
+		#Article object is passed back to the new template when it is rendered.
 		@article = Article.new
+	end
+
+	def edit
+		@article = Article.find(params[:id])
 	end
 
 	def create
 		@article = Article.new(article_params)
 
 		if @article.save
+			#Tells the browser to issue another request
 			redirect_to @article
 		else
 			render 'new'
+		end
+	end
+
+	def update
+		@article = Article.find(params[:id])
+
+		if @article.update(article_params)
+			redirect_to @article
+		else
+			render 'edit'
 		end
 	end
 

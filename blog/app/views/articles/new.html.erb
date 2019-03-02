@@ -3,6 +3,8 @@
 	<% if @article.errors.any? %>
 	  <div id="error_explanation">
 		<h2>
+		  <#'pluralize' is a rails hepler that takes an int and string as its arguments%>
+		  <#If the number is greater than one, the string is automatically pluralized.> 
 		  <%= pluralize(@article.errors.count, "error") %> prohibited
 		  this article from being saved:
 		</h2>
