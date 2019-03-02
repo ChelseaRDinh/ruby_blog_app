@@ -1,6 +1,11 @@
 #All public methods must be placed before any private methods in .rb files
 
+#Use 'http_basic_authenticate_with' method to add a basic HTTP authentication system
+
 class ArticlesController < ApplicationController
+
+	http_basic_authenticate_with name: "chelsea", password: "password", except: [:index, :show]
+
 	def index
 		@articles = Article.all
 	end
